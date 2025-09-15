@@ -1,0 +1,2 @@
+ALTER TABLE feedback
+ADD COLUMN title VARCHAR(255);
