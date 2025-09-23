@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # The PostgreSQL Database Service
+  postgres:
+    image: postgres:latest
+    container_name: my-postgres-compose
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: feedback_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # This service represents YOUR ENTIRE "FeedbackClassifier" PROJECT
+  app:
+    build: .  
+    container_name: feedback-classifier-app 
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+volumes:
+  pgdata:
