@@ -63,5 +63,5 @@ Thumbs.db
 #      Secrets and sensitive configuration
 #      (Even though we will move them out, this is a good safety net)
 # ===================================================================
-application-*.properties
+*_application.properties
 secrets.properties
